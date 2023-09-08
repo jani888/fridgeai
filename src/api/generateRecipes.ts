@@ -1,5 +1,7 @@
 export async function generateRecipes(ingredients: string[]) {
     "use client"
+    await (new Promise(r => setTimeout(r, 3500)))
+
     if(Math.random() > 0.25) {
         return "<h1>Buttered Red and Yellow Pepper Saute</h1>\n" +
             "<h2>Ingredients:</h2>\n" +
