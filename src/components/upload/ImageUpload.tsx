@@ -1,7 +1,7 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import {AiOutlineLoading} from "react-icons/ai";
-import {generateRecipes} from "@/components/upload/generateRecipes";
+import {generateRecipes} from "@/api/generateRecipes";
 import IngredientEditor from "@/components/IngredientEditor";
 import {useTypewriter} from "@/components/upload/useTypewriter";
 
