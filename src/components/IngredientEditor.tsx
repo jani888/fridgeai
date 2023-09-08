@@ -1,7 +1,6 @@
-"use client"
 import React, { useState } from 'react';
 
-const IngredientEditor = ({ value, onChange }) => {
+const IngredientEditor = ({ value, onChange }: any) => {
     const [input, setInput] = useState('');
 
     const addIngredient = () => {
@@ -11,30 +10,30 @@ const IngredientEditor = ({ value, onChange }) => {
         }
     };
 
-    const removeIngredient = (index) => {
+    const removeIngredient = (index: any) => {
         const newIngredients = [...value];
         newIngredients.splice(index, 1);
         onChange(newIngredients);
     };
 
     return (
-        <div className="ingredient-editor p-4 bg-gray-100 rounded-lg">
+        <div className="ingredient-editor p-4 bg-g bg-black text-white rounded-lg shadow-lg w-full mt-4">
             <div className="mb-4 flex">
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Enter ingredient..."
-                    className="flex-grow p-2 border rounded-lg mr-2"
+                    className="flex-grow p-2 border border-black rounded-lg mr-2 bg-gray-800 text-white"
                 />
-                <button onClick={addIngredient} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                <button onClick={addIngredient} className="bg-gradient-to-br from-blue-500 to-pink-500 p-2 rounded-lg font-blod">
                     Add
                 </button>
             </div>
 
             <ul>
                 {value.map((ingredient, index) => (
-                    <li key={index} className="flex justify-between items-center bg-white p-2 mb-2 rounded-lg shadow-md">
+                    <li key={index} className="flex justify-between items-center bg-gray-800 p-2 mb-2 rounded-lg shadow-md">
                         {ingredient}
                         <button
                             onClick={() => removeIngredient(index)}
@@ -50,4 +49,3 @@ const IngredientEditor = ({ value, onChange }) => {
 };
 
 export default IngredientEditor;
-

@@ -9,15 +9,28 @@ const ImageUpload = () => {
     const [processing, setProcessing] = useState(false);
     const [image, setImage] = useState("");
     const [ingredients, setIngredients] = useState<string[]>([]);
+    const [recipe, setRecipe] = useState("")
 
     useEffect(() => {
         if (imagePreview) {
             setProcessing(true);
         }
         setTimeout(() => {
-            setImage("https://i.imgur.com/2lZ4G6J.jpg");
-            setProcessing(false);
-            setIngredients(['apple']);
+            setImage("/looking-1.png");
+            setTimeout(() => {
+                setImage("/looking-2.png");
+                setTimeout(() => {
+                    setImage("/looking-3.png");
+                    setTimeout(() => {
+                        setImage("/recognized.png");
+                        setTimeout(() => {
+                            setImage("/recognized-with-text.png");
+                            setProcessing(false);
+                            setIngredients(['butter', 'red pepper', 'yellow pepper']);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
         }, 5000);
     }, [imagePreview]);
 
@@ -36,7 +49,16 @@ const ImageUpload = () => {
 
     async function handleGenerate() {
         setProcessing(true);
-        generateRecipes(ingredients);
+        const result = await generateRecipes(ingredients);
+        setRecipe(result)
+        setProcessing(false);
+    }
+
+    if (recipe) {
+        return <div className="flex flex-col">
+            <p className="text-white text-lg" dangerouslySetInnerHTML={{__html: recipe}}>
+            </p>
+        </div>
     }
 
     return <div className="bg-gray-900 p-8 rounded-lg w-full">
@@ -61,23 +83,23 @@ const ImageUpload = () => {
                     <img
                         src={image || imagePreview}
                         alt="Preview"
-                        className="max-w-md border rounded-lg shadow-lg"
+                        className="max-w-md border rounded-lg shadow-lg h-[300px]"
                     />
                 </div>
             )}
             {
                 processing && <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center">
-                    <AiOutlineLoading className="animate-spin" size={64} />
+                    <AiOutlineLoading className="animate-spin" size={64}/>
                     <p className="text-white font-bold text-2xl">Processing...</p>
                 </div>
             }
 
-            {ingredients.length > 0 && <IngredientEditor value={ingredients} onChange={setIngredients} /> }
+            {ingredients.length > 0 && <IngredientEditor value={ingredients} onChange={setIngredients}/>}
 
             {ingredients.length > 0 &&
                 <button
                     onClick={handleGenerate}
-                    className="cursor-pointer bg-gradient-to-r from-pink-500 to-blue-500 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+                    className="cursor-pointer mt-4 bg-gradient-to-r from-pink-500 to-blue-500 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
                 >
                     Generate recipes
                 </button>
