@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import ImageUpload from "@/components/upload/ImageUpload";
 
 export default function Home() {
     return (
@@ -7,10 +8,10 @@ export default function Home() {
                 AI</h1>
             <p className="text-white font-bold text-2xl">Revolutionizing Kitchen Intelligence</p>
 
-            <div className="relative">
-                <div className="absolute inset-[10px] bg-gradient-to-r from-pink-500 to-blue-500 blur-[24px] -z-10"></div>
+            <div className="relative mt-8 max-w-lg w-full">
+                <div className="absolute inset-[3px] bg-gradient-to-r from-pink-500 to-blue-500 blur-[24px] -z-10"></div>
                 <div className="p-4 bg-black rounded-xl">
-                    Take a photo of your fridge to continue.
+                    <ImageUpload />
                 </div>
             </div>
         </main>
