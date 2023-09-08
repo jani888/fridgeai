@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {AiOutlineLoading} from "react-icons/ai";
 import {generateRecipes} from "@/components/upload/generateRecipes";
 import IngredientEditor from "@/components/IngredientEditor";
+import {useTypewriter} from "@/components/upload/useTypewriter";
 
 const ImageUpload = () => {
     const [imagePreview, setImagePreview] = useState(null);
@@ -10,6 +11,7 @@ const ImageUpload = () => {
     const [image, setImage] = useState("");
     const [ingredients, setIngredients] = useState<string[]>([]);
     const [recipe, setRecipe] = useState("")
+    const [animatedRecipe] = useTypewriter(recipe);
 
     useEffect(() => {
         if (imagePreview) {
@@ -56,7 +58,7 @@ const ImageUpload = () => {
 
     if (recipe) {
         return <div className="flex flex-col">
-            <p className="text-white text-lg" dangerouslySetInnerHTML={{__html: recipe}}>
+            <p className="text-white text-lg" dangerouslySetInnerHTML={{__html: animatedRecipe}}>
             </p>
         </div>
     }
