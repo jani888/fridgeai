@@ -14,9 +14,10 @@ const ImageUpload = () => {
     const [animatedRecipe] = useTypewriter(recipe);
 
     useEffect(() => {
-        if (imagePreview) {
-            setProcessing(true);
+        if (!imagePreview) {
+            return
         }
+        setProcessing(true);
         setTimeout(() => {
             setImage("/looking-1.png");
             setTimeout(() => {
