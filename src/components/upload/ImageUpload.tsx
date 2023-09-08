@@ -34,7 +34,7 @@ const ImageUpload = () => {
                     }, 1000);
                 }, 1000);
             }, 1000);
-        }, 5000);
+        }, 1000);
     }, [imagePreview]);
 
     const onFileChange = (e) => {
