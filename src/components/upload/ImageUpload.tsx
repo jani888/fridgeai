@@ -16,7 +16,8 @@ const ImageUpload = () => {
         }
         setTimeout(() => {
             setImage("https://i.imgur.com/2lZ4G6J.jpg");
-            setProcessing(false)
+            setProcessing(false);
+            setIngredients(['apple']);
         }, 5000);
     }, [imagePreview]);
 
