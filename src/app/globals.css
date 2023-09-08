@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+ol li {
+  list-style-type: decimal;
+}
+
+ul li {
+  list-style-type: circle;
+}
